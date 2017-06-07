@@ -1,8 +1,8 @@
-# NgSimpleGrid
+# ng-simpleGrid
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.0.
+이 프로젝트는 Angular4 기반으로 구현되었습니다. 간단히 조작 할 수 있는 그리드 컴포넌트 및 페이징 컴포넌트를 제공합니다.
 
-## Development server
+<!--## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
@@ -25,4 +25,4 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).-->
