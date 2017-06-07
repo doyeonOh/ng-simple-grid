@@ -1,0 +1,31 @@
+@mixin blind-font {
+  font:0/0 "Noto Sans KR";
+}
+
+.paginate {
+  text-align:center;
+  padding:10px 0;
+  @include blind-font;
+  a {
+    display:inline-block;
+    width:30px;
+    height:30px;
+    text-align:center;
+    font-size:15px;
+    line-height:30px;
+    vertical-align: middle;
+    &.active {
+      border:1px solid #fcd20c;
+      font-size:15px;
+      line-height:26px;
+    }
+  }
+  .button-prev {
+    @include blind-font;
+    background: url('/assets/images/icon/ico-paginate-prev.png') 50% 50% no-repeat;
+  }
+  .button-next {
+    @include blind-font;
+    background: url('/assets/images/icon/ico-paginate-next.png') 50% 50% no-repeat;
+  }
+}
