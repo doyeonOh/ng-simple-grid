@@ -1,8 +1,8 @@
-export interface Grid {
-  columns: GridColumn[],
-  option: GridOption,
-  event: GridEvent
-}
+// export interface NgSimpleGrid {
+//   columns: GridColumn[],
+//   option?: GridOption,
+//   event?: GridEvent
+// }
 
 export interface GridColumn {
   type: string;
@@ -10,12 +10,12 @@ export interface GridColumn {
   name: string;
   width: string;
   value?: string;
-  onClick?: (e: any, value: any, data: any, index: number) => void;
+  onClick?: (e: any, value: any, index: number, rowData: any) => void;
 }
 
 
 export interface GridOption {
-  rowsPerPage: number;
+  rowsPerPage?: number;
   noDataMessage?: string;
   noDataMessageSub?: string;
 }

@@ -13,12 +13,21 @@
     text-align:center;
     font-size:15px;
     line-height:30px;
+    cursor: pointer;
     vertical-align: middle;
-    &.active {
-      border:1px solid #fcd20c;
-      font-size:15px;
-      line-height:26px;
-    }
+  }
+  strong {
+    display:inline-block;
+    width:30px;
+    height:30px;
+    text-align:center;
+    font-size:15px;
+    line-height:30px;
+    cursor: pointer;
+    vertical-align: middle;
+    border:1px solid #fcd20c;
+    font-size:15px;
+    line-height:26px;
   }
   .button-prev {
     @include blind-font;

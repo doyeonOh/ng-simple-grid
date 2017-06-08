@@ -1,27 +1,27 @@
 <table class="tbl-search-result">
   <thead>
     <tr>
-      <ng-template ngFor let-column [ngForOf]="grid?.columns">
+      <ng-template ngFor let-column [ngForOf]="columns">
         <th [width]="column.width || '10%'">{{ column.name }}</th>
       </ng-template>
     </tr>
   </thead>
   <tbody>
-    <ng-template ngFor let-data [ngForOf]="dataListToShow" let-i="index">
-      <tr (click)="onClickDataRow($event, data, i)">
-        <ng-template ngFor let-column [ngForOf]="grid?.columns" let-i="index">
+    <ng-template ngFor let-datarow [ngForOf]="dataListToShow" let-i="index">
+      <tr (click)="onClickDataRow($event, datarow, i)">
+        <ng-template ngFor let-column [ngForOf]="columns" let-i="index">
         
           <ng-template [ngIf]="column.type == 'text'">
-            <td (click)="onClickDataItem($event, column.value ? column.value : data[column.key], data, column.key, i)">
-                {{ column.value ? column.value : data[column.key] }}
+            <td (click)="onClickDataItem($event, column.value ? column.value : datarow[column.key], datarow, column.key, i)">
+                {{ column.value ? column.value : datarow[column.key] }}
             </td>
           </ng-template>
 
           <ng-template [ngIf]="column.type == 'button'">
             <td>
                 <button
-                  (click)="onClickDataItem($event, column.value ? column.value : data[column.key], data, column.key, i)">
-                  {{ column.value ? column.value : data[column.key] }}
+                  (click)="onClickDataItem($event, column.value ? column.value : datarow[column.key], datarow, column.key, i)">
+                  {{ column.value ? column.value : datarow[column.key] }}
                 </button>
             </td>
           </ng-template>
@@ -29,9 +29,9 @@
         </ng-template>
       </tr>
     </ng-template>
-    <ng-template ngFor let-data [ngForOf]="adderRowList">
+    <ng-template ngFor let-emptyRow [ngForOf]="emptyRows">
       <tr>
-        <ng-template ngFor let-column [ngForOf]="grid?.columns" let-i="index">
+        <ng-template ngFor let-column [ngForOf]="columns" let-i="index">
           <td>
           </td>
         </ng-template>
@@ -40,10 +40,10 @@
     <ng-template [ngIf]="dataListToShow.length === 0">
       <tr>
         <td class="no-data"
-            [style.height.px]="grid.option.rowsPerPage * 30"
-            [attr.colspan]="grid.columns.length">
-          <p>{{ grid.option.noDataMessage ? grid.option.noDataMessage : '검색한 내역이 없습니다' }}</p>
-          <p class="sub" [innerHTML]="grid?.option?.noDataMessageSub">
+            [style.height.px]="rowsPerPage * 30"
+            [attr.colspan]="columns.length">
+          <p>{{ emptyMessage }}</p>
+          <p class="sub" [innerHTML]="emptySubMessage">
           </p>
         </td>
       </tr>

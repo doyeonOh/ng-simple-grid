@@ -1,14 +1,21 @@
 <div class="paginate">
-  <!--<a class="item" (click)="onMoveFirst()">first</a>-->
+  <a class="item" (click)="onMoveFirst()">First</a>
   <a class="button-prev" (click)="onMovePrev()">처음</a>
   
   <ng-template ngFor let-pageNum [ngForOf]="createRange(totalPageCount)">
-    <a [class.active]="currentPageIndex == pageNum"
-      (click)="onMovePage(pageNum)">
-      {{ pageNum }} 
-    </a>
+    <ng-template [ngIf]="currentPageIndex === pageNum">
+      <strong (click)="onMovePage(pageNum)">
+        {{ pageNum }} 
+      </strong>  
+    </ng-template>
+
+    <ng-template [ngIf]="currentPageIndex !== pageNum">
+      <a (click)="onMovePage(pageNum)">
+        {{ pageNum }} 
+      </a>
+    </ng-template>
   </ng-template>
   
   <a class="button-next" (click)="onMoveNext()">끝</a>
-  <!--<a class="item" (click)="onMoveLast()">last</a>-->
+  <a class="item" (click)="onMoveLast()">Last</a>
 </div>

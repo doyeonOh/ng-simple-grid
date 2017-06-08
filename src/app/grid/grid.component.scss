@@ -58,6 +58,19 @@ $primary:  #6d6e73;
           font-weight:400;
         }
       }
+
+      button {
+        background-color: #555555; /* Green */
+        cursor: pointer;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        margin: 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }
     }
   }
 }

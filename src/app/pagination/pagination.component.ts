@@ -19,7 +19,9 @@ export class PaginationComponent implements OnInit {
   
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    console.log('oninit pagination');
+  }
 
   createRange(number: number): any[]{
     var numberList: number[] = [];
