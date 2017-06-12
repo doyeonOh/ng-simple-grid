@@ -8,7 +8,7 @@ Angular4 grid, pagination component
 이 프로젝트는 Angular4 기반으로 구현되었습니다. 간단히 조작 할 수 있는 그리드 컴포넌트 및 페이징 컴포넌트를 제공합니다.
 
 
-## Install
+<!--## Install
 ```typescript
 npm install --save ng-simplegrid
 ```
@@ -46,7 +46,7 @@ sampleDataList: any[] = [
 ```
 
 ## License
-MIT
+MIT-->
 <!--## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
