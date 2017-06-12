@@ -25,18 +25,18 @@ export class PaginationComponent implements OnInit {
 
   createRange(number: number): any[]{
     var numberList: number[] = [];
-    for(var i = 1; i <= number; i++){
+    for(var i = 0; i < number; i++){
       numberList.push(i);
     }
     return numberList;
   }
 
-  onMovePage(pageNum: number): void {
-    this.movePage.emit(pageNum);
+  onMovePage(pageIndex: number): void {
+    this.movePage.emit(pageIndex);
   }
 
   onMoveFirst(): void {
-    const FIRST_PAGE_INDEX = 1;
+    const FIRST_PAGE_INDEX = 0;
 
     if(this.currentPageIndex == FIRST_PAGE_INDEX) return;
 
@@ -44,7 +44,7 @@ export class PaginationComponent implements OnInit {
   }
 
   onMoveLast(): void {
-    const LAST_PAGE_INDEX = this.totalPageCount;
+    const LAST_PAGE_INDEX = this.totalPageCount - 1;
 
     if(this.currentPageIndex == LAST_PAGE_INDEX) return;
 
@@ -52,7 +52,7 @@ export class PaginationComponent implements OnInit {
   }
 
   onMoveNext(): void {
-    const LAST_PAGE_INDEX = this.totalPageCount;
+    const LAST_PAGE_INDEX = this.totalPageCount - 1;
 
     if(this.currentPageIndex == LAST_PAGE_INDEX) return;
 
@@ -61,7 +61,7 @@ export class PaginationComponent implements OnInit {
   }
   
   onMovePrev(): void {
-    const FIRST_PAGE_INDEX = 1;
+    const FIRST_PAGE_INDEX = 0;
 
     if(this.currentPageIndex == FIRST_PAGE_INDEX) return;
 

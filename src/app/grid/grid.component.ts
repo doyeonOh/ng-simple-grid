@@ -33,7 +33,7 @@ export class GridComponent implements OnInit {
 
   totalPageCount: number   = 1;
 
-  currentPageIndex: number = 1;
+  currentPageIndex: number = 0;
 
   emptyRows: any[] = [];
 
@@ -90,7 +90,7 @@ export class GridComponent implements OnInit {
     if(!this.dataListPerPage) 
       return ;
 
-    this.dataListToShow   = this.dataListPerPage[pageIndex - 1];
+    this.dataListToShow   = this.dataListPerPage[pageIndex];
     this.emptyRows        = this._getEmptyRowsToBeFilled(this.rowsPerPage, this.dataListToShow);
     this.currentPageIndex = pageIndex;
   }

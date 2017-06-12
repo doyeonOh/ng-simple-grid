@@ -2,16 +2,16 @@
   <a class="item" (click)="onMoveFirst()">First</a>
   <a class="button-prev" (click)="onMovePrev()">처음</a>
   
-  <ng-template ngFor let-pageNum [ngForOf]="createRange(totalPageCount)">
-    <ng-template [ngIf]="currentPageIndex === pageNum">
-      <strong (click)="onMovePage(pageNum)">
-        {{ pageNum }} 
+  <ng-template ngFor let-pageIndex [ngForOf]="createRange(totalPageCount)">
+    <ng-template [ngIf]="currentPageIndex === pageIndex">
+      <strong (click)="onMovePage(pageIndex)">
+        {{ pageIndex + 1 }} 
       </strong>  
     </ng-template>
 
-    <ng-template [ngIf]="currentPageIndex !== pageNum">
-      <a (click)="onMovePage(pageNum)">
-        {{ pageNum }} 
+    <ng-template [ngIf]="currentPageIndex !== pageIndex">
+      <a (click)="onMovePage(pageIndex)">
+        {{ pageIndex + 1 }} 
       </a>
     </ng-template>
   </ng-template>
