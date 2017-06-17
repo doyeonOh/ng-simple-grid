@@ -8,6 +8,6 @@ import { PaginationModule } from '../pagination/pagination.module';
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, PaginationModule],
   declarations: [GridComponent],
-  exports: [GridComponent, PaginationModule]
+  exports: [CommonModule, GridComponent, PaginationModule]
 })
 export class GridModule {}
