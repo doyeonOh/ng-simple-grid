@@ -1,3 +1,4 @@
-export { GridModule } from './app/grid/grid.module';
-export { PaginationModule } from './app/pagination/pagination.module';
+export { GridModule } from './grid/grid.module';
+export { GridComponent } from './grid/grid.component';
+export { PaginationModule } from './pagination/pagination.module';
 //# sourceMappingURL=index.js.map

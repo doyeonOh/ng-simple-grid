@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import { GridModule } from './grid/grid.module';
-import { PaginationModule } from './pagination/pagination.module';
+import { GridModule } from '../src/grid/grid.module';
+import { PaginationModule } from '../src/pagination/pagination.module';
 
 @NgModule({
   declarations: [

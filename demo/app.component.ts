@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { GridColumn, GridOption, GridEvent } from './grid/grid.model';
-import { GridComponent } from './grid/grid.component';
+import { GridColumn, GridOption, GridEvent } from '../src/grid/grid.model';
+import { GridComponent } from '../src/grid/grid.component';
 
 @Component({
   selector: 'app-root',

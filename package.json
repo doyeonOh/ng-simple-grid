@@ -12,7 +12,6 @@
     "tsc": "tsc --p ./src/tsconfig.app.json"
   },
   "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
   "devDependencies": {
     "@angular/animations": "^4.0.0",
     "@angular/common": "^4.0.0",
