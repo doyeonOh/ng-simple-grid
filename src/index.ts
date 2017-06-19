@@ -1,4 +1,2 @@
-export { GridModule } from './grid/grid.module';
-export { GridComponent } from './grid/grid.component';
-export { GridOption, GridEvent, GridColumn } from './grid/grid.model';
-export { PaginationModule } from './pagination/pagination.module';
+export { GridModule, GridComponent, GridOption, GridEvent, GridColumn } from './grid/index';
+export { PaginationModule, PaginationComponent } from './pagination/index';
