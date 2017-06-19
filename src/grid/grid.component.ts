@@ -4,7 +4,7 @@ import { GridColumn, GridOption, GridEvent } from './grid.model';
 @Component({
   selector: 'ng-simpleGrid',
   styleUrls: [`./grid.component.scss`],
-  templateUrl: 'grid.component.html'
+  templateUrl: './grid.component.html'
 })
 
 export class GridComponent implements OnInit {
