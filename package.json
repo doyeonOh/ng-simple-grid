@@ -13,7 +13,7 @@
     "ngc": "ngc -p ./src/tsconfig.app.json",
     "build:js": "ngc -p ./src/tsconfig.app.json",
     "build:css": "node-sass src/ -o dist/ --source-map=true",
-    "build:html": "cpx src/grid/*.html dist/grid && cpx src/pagination/*.html dist/pagination",
+    "build:html": "cpx src/grid/*.html dist/grid/",
     "build:umd": "webpack --config ./config/webpack.config.js",
     "build:aot": "npm run build:js && npm run build:css && npm run build:html"
   },
