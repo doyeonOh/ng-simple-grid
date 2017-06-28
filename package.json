@@ -1,6 +1,6 @@
 {
   "name": "ng-simplegrid",
-  "version": "0.0.20",
+  "version": "0.0.23",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -13,7 +13,7 @@
     "ngc": "ngc -p ./src/tsconfig.app.json",
     "build:js": "ngc -p ./src/tsconfig.app.json",
     "build:css": "node-sass src/ -o dist/ --source-map=true",
-    "build:html": "cpx src/grid/*.html dist/grid/",
+    "build:html": "cpx 'src/grid/*.html' dist/grid/",
     "build:umd": "webpack --config ./config/webpack.config.js",
     "build:aot": "npm run build:js && npm run build:css && npm run build:html"
   },
