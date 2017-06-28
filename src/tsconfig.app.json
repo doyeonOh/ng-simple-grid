@@ -5,10 +5,10 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "inlineSources": true,
-    "noImplicitAny": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "es5",
+    "sourceMap": true,
     "typeRoots": [
       "node_modules/@types"
     ],
