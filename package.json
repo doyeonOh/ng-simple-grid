@@ -1,6 +1,6 @@
 {
   "name": "ng-simplegrid",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -17,9 +17,9 @@
     "build:umd": "webpack --config ./config/webpack.config.js",
     "build:aot": "npm run build:js && npm run build:css && npm run build:html"
   },
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "module": "dist/index.js",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "module": "./dist/index.js",
   "peerDependencies": {
     "@angular/common": ">=2.0.0",
     "@angular/core": ">=2.0.0"
