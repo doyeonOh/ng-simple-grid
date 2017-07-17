@@ -1,7 +1,7 @@
 <table class="tbl-search-result">
   <thead>
     <tr>
-      <ng-template ngFor let-column [ngForOf]="columns">
+      <ng-template ngFor let-column [ngForOf]="grid?.columns">
         <th [width]="column.width || '10%'">{{ column.name }}</th>
       </ng-template>
     </tr>
@@ -9,19 +9,19 @@
   <tbody>
     <ng-template ngFor let-datarow [ngForOf]="dataListToShow" let-i="index">
       <tr (click)="onClickDataRow($event, datarow, i)">
-        <ng-template ngFor let-column [ngForOf]="columns" let-i="index">
+        <ng-template ngFor let-column [ngForOf]="grid?.columns" let-j="index">
         
           <ng-template [ngIf]="column.type == 'text'">
-            <td (click)="onClickDataItem($event, column.value ? column.value : datarow[column.key], datarow, column.key, i)">
-                {{ column.value ? column.value : datarow[column.key] }}
+            <td (click)="onClickDataItem($event, deriveValue(column, datarow, i, j), datarow, column.key, i)">
+                {{ deriveValue(column, datarow, i, j) }}
             </td>
           </ng-template>
 
           <ng-template [ngIf]="column.type == 'button'">
             <td>
                 <button
-                  (click)="onClickDataItem($event, column.value ? column.value : datarow[column.key], datarow, column.key, i)">
-                  {{ column.value ? column.value : datarow[column.key] }}
+                  (click)="onClickDataItem($event, deriveValue(column, datarow, i, j), datarow, column.key, i)">
+                  {{ deriveValue(column, datarow, i, j) }}
                 </button>
             </td>
           </ng-template>
@@ -31,7 +31,7 @@
     </ng-template>
     <ng-template ngFor let-emptyRow [ngForOf]="emptyRows">
       <tr>
-        <ng-template ngFor let-column [ngForOf]="columns" let-i="index">
+        <ng-template ngFor let-column [ngForOf]="grid?.columns" let-i="index">
           <td>
           </td>
         </ng-template>
@@ -40,10 +40,10 @@
     <ng-template [ngIf]="dataListToShow.length === 0">
       <tr>
         <td class="no-data"
-            [style.height.px]="rowsPerPage * 30"
-            [attr.colspan]="columns.length">
-          <p>{{ emptyMessage }}</p>
-          <p class="sub" [innerHTML]="emptySubMessage">
+            [style.height.px]="grid.option.rowsPerPage * 40"
+            [attr.colspan]="grid.columns.length">
+          <p>{{ grid.option.emptyMessage }}</p>
+          <p class="sub" [innerHTML]="grid?.option?.emptySubMessage">
           </p>
         </td>
       </tr>

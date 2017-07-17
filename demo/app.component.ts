@@ -1,3 +1,4 @@
+import { NgSimpleGrid } from './../src/grid/grid.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GridColumn, GridOption, GridEvent } from '../src/grid/grid.model';
 import { GridComponent } from '../src/grid/grid.component';
@@ -12,24 +13,24 @@ export class AppComponent implements OnInit {
   @ViewChild('grid')
   grid: GridComponent;
 
-  gridColumns: GridColumn[] = [
-    { type: 'text',   key: 'id',     name:'아이디', width: '33%'},
-    { type: 'text',   key: 'name',   name:'이름',   width: '33%'},
-    { type: 'button', key: 'email',  name:'이메일', width: '33%', 
-      onClick: (e: any, value: any, data: any, index: number) => {
-        alert(value);
-      }},
-  ];
-
-  gridOption: GridOption = {
-    
-  };
-
-  gridEvent: GridEvent = {
-    onClickRow: (row: any, index: number) => {
-      
+  ngSimpleGrid: NgSimpleGrid = {
+    columns: [
+      { type: 'text',   key: 'id',     name:'아이디', nullValue: '1', width: '33%'},
+      { type: 'text',   key: 'name',   name:'이름',   nullValue: '2', width: '33%'},
+      { type: 'button', key: 'email',  name:'이메일', nullValue: '3', width: '33%', 
+        onClick: (e: any, value: any, data: any, index: number) => {
+          alert(value);
+        }},
+    ],
+    option: {
+      rowsPerPage: 10
+    },
+    event: {
+      onClickRow: (row: any, index: number) => {
+        
+      }
     }
-  }
+  };
 
 
 

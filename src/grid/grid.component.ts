@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { GridColumn, GridOption, GridEvent } from './grid.model';
+import { GridColumn, GridOption, GridEvent, NgSimpleGrid } from './grid.model';
 
 @Component({
   selector: 'ng-simpleGrid',
@@ -8,15 +8,21 @@ import { GridColumn, GridOption, GridEvent } from './grid.model';
 })
 
 export class GridComponent implements OnInit {
-
   @Input()
-  columns: GridColumn[];
-
-  @Input()
-  event: GridEvent;
-
-  @Input()
-  rowsPerPage: number = 10;
+  grid: NgSimpleGrid = {
+    columns: [
+      { type: 'text', key: 'grid', name: 'Grid', width: '100%'}
+    ],
+    option: {
+      rowsPerPage: 10,
+      emptyMessage: '검색한 내역이 없습니다',
+      emptySubMessage: ''
+    },
+    event: {
+      onClickRow: (datarow: any, index: number) => {
+      }
+    }
+  };
 
   @Input()
   dataList: any[] = [];
@@ -41,8 +47,9 @@ export class GridComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(!this.columns) 
-      console.error('ng-simpleGrid: grid.columns is not exists.');
+    if(this.dataList && this.dataList.length > 0) {
+      this.initializeData(this.dataList);
+    }
   }
   
   setDataList(dataList: any[]): void {
@@ -52,10 +59,12 @@ export class GridComponent implements OnInit {
   }
 
   initializeData(dataList: any[]) {
-    this.totalPageCount   = this._getTotalPageCount(this.rowsPerPage, dataList);
-    this.dataListPerPage  = this._getDataListPerPage(this.rowsPerPage, dataList);
-    this.dataListToShow   = this.dataListPerPage[0];
-    this.emptyRows        = this._getEmptyRowsToBeFilled(this.rowsPerPage, this.dataListToShow);
+    let rowsPerPage       = this.grid.option.rowsPerPage;
+
+    this.totalPageCount   = this._getTotalPageCount(dataList, rowsPerPage);
+    this.dataListPerPage  = this._getDataListPerPage(dataList, rowsPerPage, this.totalPageCount);
+    this.dataListToShow   = this.dataListPerPage[0] || [];
+    this.emptyRows        = this._getEmptyRowsToBeFilled(this.dataListToShow, rowsPerPage);
   }
 
   search(key: string, value: string): void {
@@ -67,37 +76,52 @@ export class GridComponent implements OnInit {
       return ;
     }
 
-    let filteredList = [];
-    
-    for(let data of this.dataList) {
-      if(data[key].include(data))
-        filteredList.push(data);
-    }
+    let filteredList = this.dataList.filter(data => data[key].includes(value));
 
     this.initializeData(filteredList);
   }
 
   onClickDataItem(e: any,  value: any, datarow: any, key: string, index: number): void {
-    let column: GridColumn = this._getColumnByProperty(this.columns, key, 'onClick');
+    e.stopPropagation();
+
+    let column: GridColumn = this._getColumnByProperty(this.grid.columns, key, 'onClick');
 
     if(column == null)
       return ;
+    console.log('coolumn,', column);
 
     column.onClick(e, value, index, datarow);
+  }
+
+  createRange(number: number) {
+    let numberList: number[] = [];
+    for(let i = 1; i <= number; i++) {
+      numberList.push(i);
+    }
+    return numberList;
+  }
+
+  deriveValue(column: GridColumn, datarow: any, rowIndex: number, colIndex: number) {
+    if(column.value)          return column.value;
+    if(column.onCustomValue)  return column.onCustomValue(datarow, rowIndex, colIndex);
+
+    return column.nullValue && !datarow[column.key] ? column.nullValue : datarow[column.key];
   }
 
   onMovePage(pageIndex: number): void {
     if(!this.dataListPerPage) 
       return ;
 
+    let rowsPerPage     = this.grid.option.rowsPerPage;
+
     this.dataListToShow   = this.dataListPerPage[pageIndex];
-    this.emptyRows        = this._getEmptyRowsToBeFilled(this.rowsPerPage, this.dataListToShow);
+    this.emptyRows        = this._getEmptyRowsToBeFilled(this.dataListToShow, rowsPerPage);
     this.currentPageIndex = pageIndex;
   }
 
   onClickDataRow(e: any, row: any, index: number) {
-    if(this.event && this.event.onClickRow) {
-      this.event.onClickRow(row, index);
+    if(this.grid.event && this.grid.event.onClickRow) {
+      this.grid.event.onClickRow(row, index);
     }
   }
 
@@ -116,24 +140,27 @@ export class GridComponent implements OnInit {
     return selectedColumn;
   }
 
-  private _getTotalPageCount(rowsPerPage: number, dataList: any[]): any {
+  private _getTotalPageCount(dataList: any[], rowsPerPage: number): any {
     let dataListSize  = dataList.length;
     
     return Math.ceil(dataListSize / rowsPerPage);
   }
 
-  private _getDataListPerPage(rowsPerPage: number, dataList: any[]): any {
+  private _getDataListPerPage(dataList: any[], rowsPerPage: number, totalPageCount: number): any {
     let dataListPerPage = [];
 
-    for(let i = 0; i <= this.totalPageCount; i++) {
+    for(let i = 0; i <= totalPageCount; i++) {
       dataListPerPage.push(this.dataList.splice(0, rowsPerPage));
     }
 
     return dataListPerPage;
   }
 
-  private _getEmptyRowsToBeFilled(rowsPerPage: number, dataList: any[]) {
-    let emptyRowsCount = rowsPerPage - dataList.length;
+  private _getEmptyRowsToBeFilled(lastDataList: any[], rowsPerPage: number) {
+    if(lastDataList && lastDataList.length === 0)
+      return [];
+
+    let emptyRowsCount = rowsPerPage - lastDataList.length;
 
     return new Array(emptyRowsCount);
   }
