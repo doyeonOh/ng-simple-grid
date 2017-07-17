@@ -16,6 +16,19 @@
     cursor: pointer;
     vertical-align: middle;
   }
+  button {
+    display:inline-block;
+    height:30px;
+    text-align:center;
+    font-size:15px;
+    line-height:30px;
+    cursor: pointer;
+    vertical-align: middle;
+    border: none;
+    color: black;
+    background-color: white;
+    text-decoration: none;
+  }
   strong {
     display:inline-block;
     width:30px;

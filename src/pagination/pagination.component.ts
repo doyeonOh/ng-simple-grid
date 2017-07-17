@@ -14,6 +14,9 @@ export class PaginationComponent implements OnInit {
   @Input()
   currentPageIndex: number;
 
+  @Input()
+  numberCountOfPage: number = 9;
+
   @Output()
   movePage: EventEmitter<any> = new EventEmitter<any>();
   
@@ -23,9 +26,37 @@ export class PaginationComponent implements OnInit {
     console.log('oninit pagination');
   }
 
-  createRange(number: number): any[]{
+  getDynamicPageNumberList(currentPageIndex: number, totalPageCount: number, numberCountOfPage: number) {
+    if(totalPageCount === 0) 
+      return [];
+    
+    if(totalPageCount <= numberCountOfPage) {
+      return this.createRange(0, totalPageCount);
+    }
+    
+    let from  = 0;
+    let to    = 0;
+    let half  = Math.floor(numberCountOfPage / 2);
+    let min   = currentPageIndex - half;
+    let max   = currentPageIndex + half + 1;
+
+    if(min < 0) {
+      from  = 0;
+      to    = numberCountOfPage;
+    } else if(max > totalPageCount) {
+      from  = totalPageCount - numberCountOfPage;
+      to    = totalPageCount;
+    } else {
+      from  = min;
+      to    = max;
+    }
+    
+    return this.createRange(from, to);
+  }
+
+  createRange(from: number, to: number): any[]{
     var numberList: number[] = [];
-    for(var i = 0; i < number; i++){
+    for(var i = from; i < to; i++){
       numberList.push(i);
     }
     return numberList;
