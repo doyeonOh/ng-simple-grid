@@ -57,7 +57,7 @@ sampleDataList: any[] = [
 ```
 
 
-## config
+## Config
 columns
 
 | key        | Description |
