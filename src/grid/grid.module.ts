@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { GridComponent } from './grid.component';
-import { PaginationModule } from '../pagination/pagination.module';
+import { PaginationComponent } from './pagination.component';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, PaginationModule],
-  declarations: [GridComponent],
-  exports: [CommonModule, GridComponent, PaginationModule]
+  imports: [CommonModule],
+  declarations: [GridComponent, PaginationComponent],
+  exports: [CommonModule, GridComponent, PaginationComponent]
 })
 export class GridModule {}

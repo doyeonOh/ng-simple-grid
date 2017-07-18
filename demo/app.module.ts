@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { GridModule } from '../src/grid/grid.module';
-import { PaginationModule } from '../src/pagination/pagination.module';
 
 @NgModule({
   declarations: [
@@ -12,8 +11,7 @@ import { PaginationModule } from '../src/pagination/pagination.module';
   ],
   imports: [
     BrowserModule,
-    GridModule,
-    PaginationModule
+    GridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

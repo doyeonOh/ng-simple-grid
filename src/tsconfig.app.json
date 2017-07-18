@@ -1,13 +1,32 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../dist",
-    "module": "es2015",
-    "baseUrl": "",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "inlineSources": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "sourceMap": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2016",
+      "dom"
+    ],
     "types": [
       "node"
     ]
   },
+  "files": [
+    "index.ts",
+    "grid/grid.module.ts",
+    "grid/grid.component.ts",
+    "grid/pagination.component.ts",
+    "grid/grid.model.ts"
+  ],
   "exclude": [
     "test.ts",
     "**/*.spec.ts"

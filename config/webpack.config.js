@@ -28,7 +28,6 @@ module.exports = {
       {
         test: /\.ts$/,
         loaders: [
-          'string-replace-loader?search=component\.css&replace=component\.scss',
           'awesome-typescript-loader?configFileName=src/tsconfig.app.json&declaration=false',
           'angular2-template-loader'
         ]

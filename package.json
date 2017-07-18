@@ -1,19 +1,22 @@
 {
   "name": "ng-simplegrid",
-  "version": "0.0.20",
+  "version": "0.1.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "tsc": "tsc --p ./src/tsconfig.app.json",
     "ngc": "ngc -p ./src/tsconfig.app.json",
+    "build": "npm run build:umd && npm run build:aot",
+    "replace": "replace 'component.scss' 'component.css' ./dist -r --include='*.js'",
+    "deploy": "npm run build && npm run replace && npm run inline && npm publish",
+    "inline": "ng2-inline --compress -b dist/grid -o ./ 'dist/grid/*.js'",
     "build:js": "ngc -p ./src/tsconfig.app.json",
     "build:css": "node-sass src/ -o dist/ --source-map=true",
-    "build:html": "cpx src/grid/*.html dist/grid && cpx src/pagination/*.html dist/pagination",
+    "build:html": "cpx 'src/grid/*.html' dist/grid/",
     "build:umd": "webpack --config ./config/webpack.config.js",
     "build:aot": "npm run build:js && npm run build:css && npm run build:html"
   },
@@ -39,6 +42,7 @@
     "@angular/router": "^4.0.0",
     "@types/jasmine": "2.5.45",
     "@types/node": "~6.0.60",
+    "angular2-inline-template-style": "^1.1.0",
     "angular2-template-loader": "~0.6.0",
     "awesome-typescript-loader": "~3.1.0",
     "codelyzer": "~3.0.1",
@@ -55,15 +59,14 @@
     "node-sass": "~4.5.0",
     "protractor": "~5.1.2",
     "raw-loader": "~0.5.0",
+    "replace": "^0.3.0",
     "rxjs": "^5.1.0",
     "sass-loader": "~6.0.0",
-    "string-replace-loader": "~1.1.0",
     "strip-sourcemap-loader": "~0.0.0",
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
     "typescript": "~2.3.3",
     "webpack": "~2.3.0",
     "zone.js": "^0.8.4"
-  },
-  "dependencies": {}
+  }
 }
