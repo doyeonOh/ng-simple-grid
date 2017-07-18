@@ -8,7 +8,7 @@ export interface GridColumn {
   type: string;
   key: string;
   name: string;
-  width: string;
+  width?: string;
   value?: string;
   nullValue?: string;
   onCustomValue?: (data: any, rowIndex: number, colIndex: number) => string;

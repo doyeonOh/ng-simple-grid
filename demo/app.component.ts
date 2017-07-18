@@ -15,9 +15,9 @@ export class AppComponent implements OnInit {
 
   ngSimpleGrid: NgSimpleGrid = {
     columns: [
-      { type: 'text',   key: 'id',     name:'아이디', nullValue: '1', width: '33%'},
-      { type: 'text',   key: 'name',   name:'이름',   nullValue: '2', width: '33%'},
-      { type: 'button', key: 'email',  name:'이메일', nullValue: '3', width: '33%', 
+      { type: 'text',   key: 'id',     name:'아이디', nullValue: '1'},
+      { type: 'text',   key: 'name',   name:'이름',   nullValue: '2'},
+      { type: 'button', key: 'email',  name:'이메일', nullValue: '3', 
         onClick: (e: any, value: any, data: any, index: number) => {
           alert(value);
         }},

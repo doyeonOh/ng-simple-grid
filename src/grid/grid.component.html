@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <ng-template ngFor let-column [ngForOf]="grid?.columns">
-        <th [width]="column.width || '10%'">{{ column.name }}</th>
+        <th [width]="column.width">{{ column.name }}</th>
       </ng-template>
     </tr>
   </thead>
