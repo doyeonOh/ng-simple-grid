@@ -5,6 +5,7 @@
 # ng-simple-grid
 
 angular2+ grid components. also provide pagination component.
+[ng-simple-grid demo](https://ng-simple-grid-example.firebaseapp.com/)
 
 * `ng-simpleGrid` changed to `ng-simple-grid`
 
