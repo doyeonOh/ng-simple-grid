@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'ng-simplePagination',
+  selector: 'ng-simple-pagination',
   styleUrls: [`./pagination.component.scss`],
   templateUrl: './pagination.component.html'
 })

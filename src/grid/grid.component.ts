@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { GridColumn, GridOption, GridEvent, NgSimpleGrid } from './grid.model';
 
 @Component({
-  selector: 'ng-simpleGrid',
+  selector: 'ng-simple-grid',
   styleUrls: [`./grid.component.scss`],
   templateUrl: './grid.component.html'
 })

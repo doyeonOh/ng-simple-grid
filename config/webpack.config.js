@@ -7,13 +7,13 @@ module.exports = {
     hints: false
   },
   entry: {
-    'ng-simplegrid.umd': './src/index.ts',
-    'ng-simplegrid.umd.min': './src/index.ts'
+    'ng-simple-grid.umd': './src/index.ts',
+    'ng-simple-grid.umd.min': './src/index.ts'
   },
   output: {
     path: path.join(__dirname, '../bundles'),
     filename: '[name].js',
-    library: 'ng-simplegrid',
+    library: 'ng-simple-grid',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },

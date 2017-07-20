@@ -2,18 +2,20 @@
 <!--[![Build Status](https://travis-ci.org/tb/ng2-nouislider.svg?branch=master)](https://travis-ci.org/tb/ng2-nouislider)
 [![npm version](https://badge.fury.io/js/ng2-nouislider.svg)](http://badge.fury.io/js/ng2-nouislider)
 [![Downloads](http://img.shields.io/npm/dm/ng2-nouislider.svg)](https://npmjs.org/package/ng2-nouislider)-->
-# ng-simpleGrid
+# ng-simple-grid
 
 angular2+ grid components. also provide pagination component.
 
+* `ng-simpleGrid` changed to `ng-simple-grid`
+
 ## Install
 ```typescript
-npm install --save ng-simplegrid
+npm install --save ng-simple-grid
 ```
 
 ## Import
 ```typesript
-import { NgSimpleGridModule } from 'ng-simpleGrid';
+import { NgSimpleGridModule } from 'ng-simple-grid';
 
 @NgModule({
   ...
@@ -26,7 +28,7 @@ import { NgSimpleGridModule } from 'ng-simpleGrid';
 
 ## Usage
 ```typescript
-import { GridComponent, GridColumn } from 'ng-simpleGrid';
+import { GridComponent, GridColumn } from 'ng-simple-grid';
 
 @ViewChild('grid')
 grid: GridComponent;
@@ -50,10 +52,10 @@ sampleDataList: any[] = [
 ```
 
 ```html
-<ng-simpleGrid #grid 
+<ng-simple-grid #grid 
   [grid]="gridOption" 
   [dataList]="sampleDataList">
-</ng-simpleGrid>
+</ng-simpleg-grid>
 ```
 
 
