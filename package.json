@@ -1,6 +1,6 @@
 {
   "name": "ng-simple-grid",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -11,7 +11,7 @@
     "tsc": "tsc --p ./src/tsconfig.app.json",
     "ngc": "ngc -p ./src/tsconfig.app.json",
     "build": "npm run build:umd && npm run build:aot",
-    "replace": "replace 'component.scss' 'component.css' ./dist -r --include='*.js'",
+    "replace": "replace 'component.scss' 'component.css' ./dist -r --include='*'",
     "deploy": "npm run build && npm run replace && npm run inline && npm publish",
     "inline": "ng2-inline --compress -b dist/grid -o ./ 'dist/grid/*.js'",
     "build:js": "ngc -p ./src/tsconfig.app.json",
