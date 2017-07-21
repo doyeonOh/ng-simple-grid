@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { GridComponent } from './grid.component';
 import { PaginationComponent } from './pagination.component';
+import { NgSimplePaginationModule } from './pagination.module';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [GridComponent, PaginationComponent],
-  exports: [CommonModule, GridComponent, PaginationComponent]
+  imports: [CommonModule, NgSimplePaginationModule],
+  declarations: [GridComponent],
+  exports: [CommonModule, GridComponent]
 })
-export class GridModule {}
+export class NgSimpleGridModule {}

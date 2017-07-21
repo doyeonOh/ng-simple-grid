@@ -15,7 +15,7 @@ export class GridComponent implements OnInit {
     ],
     option: {
       rowsPerPage: 10,
-      emptyMessage: '검색한 내역이 없습니다',
+      emptyMessage: '',
       emptySubMessage: ''
     },
     event: {
@@ -28,20 +28,20 @@ export class GridComponent implements OnInit {
   dataList: any[] = [];
 
   @Input()
-  emptyMessage: string = '검색한 내역이 없습니다';
+  emptyMessage: string      = 'No results were found for your search';
 
   @Input()
   emptySubMessage: string;
 
-  dataListToShow: any[] = [];
+  dataListToShow: any[]     = [];
 
   dataListPerPage: any[];
 
-  totalPageCount: number   = 1;
+  totalPageCount: number    = 1;
 
-  currentPageIndex: number = 0;
+  currentPageIndex: number  = 0;
 
-  emptyRows: any[] = [];
+  emptyRows: any[]          = [];
 
   constructor() { 
   }

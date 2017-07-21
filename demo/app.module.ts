@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import { GridModule } from '../src/grid/grid.module';
+import { NgSimpleGridModule } from '../src/grid/grid.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,7 @@ import { GridModule } from '../src/grid/grid.module';
   ],
   imports: [
     BrowserModule,
-    GridModule
+    NgSimpleGridModule
   ],
   providers: [],
   bootstrap: [AppComponent]
