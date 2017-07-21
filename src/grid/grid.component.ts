@@ -23,9 +23,6 @@ export class GridComponent implements OnInit {
       },
       onDbClickRow: (datarow: any, index: number) => {
       }
-    },
-    style: {
-      headerColor: '#333333'
     }
   };
 
