@@ -1,5 +1,8 @@
 CHANGELOG.md
 
+### 0.1.9
+- update `event.onDbClickRow` config
+
 ### 0.1.8
 - `grid` Input changed to `config`
 

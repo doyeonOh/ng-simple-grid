@@ -20,18 +20,21 @@ export class GridComponent implements OnInit {
     },
     event: {
       onClickRow: (datarow: any, index: number) => {
+      },
+      onDbClickRow: (datarow: any, index: number) => {
       }
+    },
+    style: {
+      headerColor: '#333333'
     }
   };
 
   @Input()
   dataList: any[] = [];
 
-  @Input()
-  emptyMessage: string      = 'No results were found for your search';
-
-  @Input()
-  emptySubMessage: string;
+  default: any = {
+    emptyMessage: 'No results'
+  }
 
   dataListToShow: any[]     = [];
 
@@ -68,7 +71,7 @@ export class GridComponent implements OnInit {
   }
 
   search(key: string, value: string): void {
-    if(!this.dataList)
+    if(!this.dataList) 
       return ;
 
     if(value === '') {
@@ -112,7 +115,7 @@ export class GridComponent implements OnInit {
     if(!this.dataListPerPage) 
       return ;
 
-    let rowsPerPage     = this.config.option.rowsPerPage;
+    let rowsPerPage       = this.config.option.rowsPerPage;
 
     this.dataListToShow   = this.dataListPerPage[pageIndex];
     this.emptyRows        = this._getEmptyRowsToBeFilled(this.dataListToShow, rowsPerPage);
@@ -123,6 +126,16 @@ export class GridComponent implements OnInit {
     if(this.config.event && this.config.event.onClickRow) {
       this.config.event.onClickRow(row, index);
     }
+  }
+
+  onDbClickDataRow(e: any, row: any, index: number) {
+    if(this.config.event && this.config.event.onDbClickRow) {
+      this.config.event.onDbClickRow(row, index);
+    }
+  }
+
+  isEmptyDataList() {
+    return this.dataListToShow.length === 0
   }
 
   private _getColumnByProperty(columns: GridColumn[], key: string, property: string): GridColumn {

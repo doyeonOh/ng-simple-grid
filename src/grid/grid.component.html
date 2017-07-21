@@ -8,7 +8,8 @@
   </thead>
   <tbody>
     <ng-template ngFor let-datarow [ngForOf]="dataListToShow" let-i="index">
-      <tr (click)="onClickDataRow($event, datarow, i)">
+      <tr (click)="onClickDataRow($event, datarow, i)"
+          (dbclick)="onDbClickDataRow($event, datarow, i)">
         <ng-template ngFor let-column [ngForOf]="config?.columns" let-j="index">
         
           <ng-template [ngIf]="column.type == 'text'">
@@ -37,12 +38,12 @@
         </ng-template>
       </tr>
     </ng-template>
-    <ng-template [ngIf]="dataListToShow.length === 0">
+    <ng-template [ngIf]="isEmptyDataList()">
       <tr>
         <td class="no-data"
             [style.height.px]="config.option.rowsPerPage * 40"
             [attr.colspan]="config.columns.length">
-          <p>{{ config.option.emptyMessage }}</p>
+          <p>{{ config?.option?.emptyMessage || default.emptyMessage }}</p>
           <p class="sub" [innerHTML]="config?.option?.emptySubMessage">
           </p>
         </td>

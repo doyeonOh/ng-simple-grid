@@ -87,7 +87,7 @@ option
 | key          | Description |
 | -------------   | ------------- |
 | rowsPerPage?     | number of lines to show on a page(default: 10)  |
-| emptyMessage?    | message to show if data list does not exist  |
+| emptyMessage?    | message to show if data list does not exist(default: 'No results')  |
 | emptySubMessage? | secondary message to show if data list does not exist  |
 
 event
@@ -95,6 +95,7 @@ event
 | key        | Description |
 | ------------- | ------------- |
 | onClickRow?   | callback when a line is clicked  |
+| onDbClickRow? | callback when a line is double clicked  |
 
 ## License
 MIT

@@ -20,8 +20,11 @@ export interface GridOption {
   rowsPerPage?: number;
   emptyMessage?: string;
   emptySubMessage?: string;
+  noDataMessage?: string;
+  noDataSubMessage?: string;
 }
 
 export interface GridEvent {
-  onClickRow: (row: any, index: number) => void;
+  onClickRow?: (row: any, index: number) => void;
+  onDbClickRow?: (row: any, index: number) => void;
 }
