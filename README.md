@@ -29,7 +29,7 @@ import { NgSimpleGridModule } from 'ng-simple-grid';
 
 ## Usage
 ```typescript
-import { GridComponent, GridColumn } from 'ng-simple-grid';
+import { NgSimpleGrid, GridComponent, GridColumn } from 'ng-simple-grid';
 
 @ViewChild('grid')
 grid: GridComponent;
