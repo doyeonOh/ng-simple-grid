@@ -9,7 +9,7 @@ import { GridColumn, GridOption, GridEvent, NgSimpleGrid } from './grid.model';
 
 export class GridComponent implements OnInit {
   @Input()
-  grid: NgSimpleGrid = {
+  config: NgSimpleGrid = {
     columns: [
       { type: 'text', key: 'grid', name: 'Grid', width: '100%'}
     ],
@@ -59,7 +59,7 @@ export class GridComponent implements OnInit {
   }
 
   initializeData(dataList: any[]) {
-    let rowsPerPage       = this.grid.option.rowsPerPage;
+    let rowsPerPage       = this.config.option.rowsPerPage;
 
     this.totalPageCount   = this._getTotalPageCount(dataList, rowsPerPage);
     this.dataListPerPage  = this._getDataListPerPage(dataList, rowsPerPage, this.totalPageCount);
@@ -84,7 +84,7 @@ export class GridComponent implements OnInit {
   onClickDataItem(e: any,  value: any, datarow: any, key: string, index: number): void {
     e.stopPropagation();
 
-    let column: GridColumn = this._getColumnByProperty(this.grid.columns, key, 'onClick');
+    let column: GridColumn = this._getColumnByProperty(this.config.columns, key, 'onClick');
 
     if(column == null)
       return ;
@@ -112,7 +112,7 @@ export class GridComponent implements OnInit {
     if(!this.dataListPerPage) 
       return ;
 
-    let rowsPerPage     = this.grid.option.rowsPerPage;
+    let rowsPerPage     = this.config.option.rowsPerPage;
 
     this.dataListToShow   = this.dataListPerPage[pageIndex];
     this.emptyRows        = this._getEmptyRowsToBeFilled(this.dataListToShow, rowsPerPage);
@@ -120,8 +120,8 @@ export class GridComponent implements OnInit {
   }
 
   onClickDataRow(e: any, row: any, index: number) {
-    if(this.grid.event && this.grid.event.onClickRow) {
-      this.grid.event.onClickRow(row, index);
+    if(this.config.event && this.config.event.onClickRow) {
+      this.config.event.onClickRow(row, index);
     }
   }
 

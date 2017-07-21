@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   @ViewChild('grid')
   grid: GridComponent;
 
-  ngSimpleGrid: NgSimpleGrid = {
+  gridConfig: NgSimpleGrid = {
     columns: [
       { type: 'text',   key: 'id',     name:'아이디', nullValue: '1'},
       { type: 'text',   key: 'name',   name:'이름',   nullValue: '2'},

@@ -1,7 +1,7 @@
 <table class="tbl-search-result">
   <thead>
     <tr>
-      <ng-template ngFor let-column [ngForOf]="grid?.columns">
+      <ng-template ngFor let-column [ngForOf]="config?.columns">
         <th [width]="column.width">{{ column.name }}</th>
       </ng-template>
     </tr>
@@ -9,7 +9,7 @@
   <tbody>
     <ng-template ngFor let-datarow [ngForOf]="dataListToShow" let-i="index">
       <tr (click)="onClickDataRow($event, datarow, i)">
-        <ng-template ngFor let-column [ngForOf]="grid?.columns" let-j="index">
+        <ng-template ngFor let-column [ngForOf]="config?.columns" let-j="index">
         
           <ng-template [ngIf]="column.type == 'text'">
             <td (click)="onClickDataItem($event, deriveValue(column, datarow, i, j), datarow, column.key, i)">
@@ -31,7 +31,7 @@
     </ng-template>
     <ng-template ngFor let-emptyRow [ngForOf]="emptyRows">
       <tr>
-        <ng-template ngFor let-column [ngForOf]="grid?.columns" let-i="index">
+        <ng-template ngFor let-column [ngForOf]="config?.columns" let-i="index">
           <td>
           </td>
         </ng-template>
@@ -40,10 +40,10 @@
     <ng-template [ngIf]="dataListToShow.length === 0">
       <tr>
         <td class="no-data"
-            [style.height.px]="grid.option.rowsPerPage * 40"
-            [attr.colspan]="grid.columns.length">
-          <p>{{ grid.option.emptyMessage }}</p>
-          <p class="sub" [innerHTML]="grid?.option?.emptySubMessage">
+            [style.height.px]="config.option.rowsPerPage * 40"
+            [attr.colspan]="config.columns.length">
+          <p>{{ config.option.emptyMessage }}</p>
+          <p class="sub" [innerHTML]="config?.option?.emptySubMessage">
           </p>
         </td>
       </tr>

@@ -1,5 +1,7 @@
 CHANGELOG.md
 
+### 0.1.8
+- `grid` Input changed to `config`
 
 ### 0.1.7
 - `GridModule` name changed to `NgSimpleGridModule`

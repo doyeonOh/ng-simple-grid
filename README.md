@@ -4,13 +4,13 @@
 [![Downloads](http://img.shields.io/npm/dm/ng2-nouislider.svg)](https://npmjs.org/package/ng2-nouislider)-->
 # ng-simple-grid
 
-angular2+ grid components. also provide pagination component.
-[ng-simple-grid demo](https://ng-simple-grid-example.firebaseapp.com/)
+angular4+ grid components. also provide pagination component.
+[see demo](https://ng-simple-grid-example.firebaseapp.com/)
 
 * `ng-simpleGrid` changed to `ng-simple-grid`
 
 ## Install
-```typescript
+```
 npm install --save ng-simple-grid
 ```
 
@@ -34,7 +34,7 @@ import { NgSimpleGrid, GridComponent, GridColumn } from 'ng-simple-grid';
 @ViewChild('grid')
 grid: GridComponent;
 
-gridOption: NgSimpleGrid = {
+gridConfig: NgSimpleGrid = {
   columns: [
     { type: 'text',   key: 'id',     name:'ID'    },
     { type: 'text',   key: 'name',   name:'NAME'  },
@@ -54,11 +54,18 @@ sampleDataList: any[] = [
 
 ```html
 <ng-simple-grid #grid 
-  [grid]="gridOption" 
+  [config]="gridConfig" 
   [dataList]="sampleDataList">
-</ng-simpleg-grid>
+</ng-simple-grid>
 ```
 
+You can also dynamically set the data list using the setDataList () function.
+
+```typescript
+ngOnInit() {
+  this.grid.setDataList(this.sampleDataList);
+}
+```
 
 ## Config
 columns

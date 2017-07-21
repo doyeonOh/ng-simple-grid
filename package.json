@@ -1,6 +1,6 @@
 {
   "name": "ng-simple-grid",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -24,8 +24,8 @@
   "typings": "./dist/index.d.ts",
   "module": "./dist/index.js",
   "peerDependencies": {
-    "@angular/common": ">=2.0.0",
-    "@angular/core": ">=2.0.0"
+    "@angular/common": ">=4.0.0",
+    "@angular/core": ">=4.0.0"
   },
   "devDependencies": {
     "@angular/animations": "^4.0.0",
