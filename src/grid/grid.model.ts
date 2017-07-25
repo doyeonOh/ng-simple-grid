@@ -22,6 +22,7 @@ export interface GridOption {
   emptySubMessage?: string;
   noDataMessage?: string;
   noDataSubMessage?: string;
+  rowHeight?: number;
 }
 
 export interface GridEvent {

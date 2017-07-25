@@ -2,7 +2,10 @@
   <thead>
     <tr>
       <ng-template ngFor let-column [ngForOf]="config?.columns">
-        <th [width]="column.width">{{ column.name }}</th>
+        <th [width]="column.width" 
+            [style.height.px]="config.option.rowHeight || default.option.rowHeight">
+            {{ column.name }}
+        </th>
       </ng-template>
     </tr>
   </thead>
@@ -10,16 +13,18 @@
     <ng-template ngFor let-datarow [ngForOf]="dataListToShow" let-i="index">
       <tr (click)="onClickDataRow($event, datarow, i)"
           (dbclick)="onDbClickDataRow($event, datarow, i)">
+
         <ng-template ngFor let-column [ngForOf]="config?.columns" let-j="index">
         
-          <ng-template [ngIf]="column.type == 'text'">
-            <td (click)="onClickDataItem($event, deriveValue(column, datarow, i, j), datarow, column.key, i)">
+          <ng-template [ngIf]="isTextType()">
+            <td (click)="onClickDataItem($event, deriveValue(column, datarow, i, j), datarow, column.key, i)"
+                [style.height.px]="config.option.rowHeight || default.option.rowHeight">
                 {{ deriveValue(column, datarow, i, j) }}
             </td>
           </ng-template>
 
-          <ng-template [ngIf]="column.type == 'button'">
-            <td>
+          <ng-template [ngIf]="isButtonType()">
+            <td [style.height.px]="config.option.rowHeight || default.option.rowHeight">
                 <button
                   (click)="onClickDataItem($event, deriveValue(column, datarow, i, j), datarow, column.key, i)">
                   {{ deriveValue(column, datarow, i, j) }}
@@ -28,6 +33,7 @@
           </ng-template>
 
         </ng-template>
+        
       </tr>
     </ng-template>
     <ng-template ngFor let-emptyRow [ngForOf]="emptyRows">
@@ -41,9 +47,9 @@
     <ng-template [ngIf]="isEmptyDataList()">
       <tr>
         <td class="no-data"
-            [style.height.px]="config.option.rowsPerPage * 40"
+            [style.height.px]="config.option.rowsPerPage * (config.option.rowHeight || config.option.rowHeight)"
             [attr.colspan]="config.columns.length">
-          <p>{{ config?.option?.emptyMessage || default.emptyMessage }}</p>
+          <p>{{ config?.option?.emptyMessage || default.option.emptyMessage }}</p>
           <p class="sub" [innerHTML]="config?.option?.emptySubMessage">
           </p>
         </td>

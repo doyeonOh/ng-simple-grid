@@ -1,3 +1,4 @@
+import { GridColumn } from './../../dist/grid/grid.model.d';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { GridColumn, GridOption, GridEvent, NgSimpleGrid } from './grid.model';
 
@@ -16,7 +17,8 @@ export class GridComponent implements OnInit {
     option: {
       rowsPerPage: 10,
       emptyMessage: '',
-      emptySubMessage: ''
+      emptySubMessage: '',
+      rowHeight: 40
     },
     event: {
       onClickRow: (datarow: any, index: number) => {
@@ -30,7 +32,10 @@ export class GridComponent implements OnInit {
   dataList: any[] = [];
 
   default: any = {
-    emptyMessage: 'No results'
+    option: {
+      emptyMessage: 'No results',
+      rowHeight:    40
+    }
   }
 
   dataListToShow: any[]     = [];
@@ -48,18 +53,17 @@ export class GridComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.dataList && this.dataList.length > 0) {
-      this.initializeData(this.dataList);
+      this._initializeData(this.dataList, this.config.option.rowsPerPage);
     }
   }
   
   setDataList(dataList: any[]): void {
     this.dataList = dataList;
     
-    this.initializeData(dataList);
+    this._initializeData(dataList, this.config.option.rowsPerPage);
   }
 
-  initializeData(dataList: any[]) {
-    let rowsPerPage       = this.config.option.rowsPerPage;
+  private _initializeData(dataList: any[], rowsPerPage: number): void {
 
     this.totalPageCount   = this._getTotalPageCount(dataList, rowsPerPage);
     this.dataListPerPage  = this._getDataListPerPage(dataList, rowsPerPage, this.totalPageCount);
@@ -72,13 +76,13 @@ export class GridComponent implements OnInit {
       return ;
 
     if(value === '') {
-      this.initializeData(this.dataList);
+      this._initializeData(this.dataList, this.config.option.rowsPerPage);
       return ;
     }
 
     let filteredList = this.dataList.filter(data => data[key].includes(value));
 
-    this.initializeData(filteredList);
+    this._initializeData(filteredList, this.config.option.rowsPerPage);
   }
 
   onClickDataItem(e: any,  value: any, datarow: any, key: string, index: number): void {
@@ -88,16 +92,17 @@ export class GridComponent implements OnInit {
 
     if(column == null)
       return ;
-    console.log('coolumn,', column);
 
     column.onClick(e, value, index, datarow);
   }
 
   createRange(number: number) {
     let numberList: number[] = [];
+
     for(let i = 1; i <= number; i++) {
       numberList.push(i);
     }
+
     return numberList;
   }
 
@@ -105,17 +110,15 @@ export class GridComponent implements OnInit {
     if(column.value)          return column.value;
     if(column.onCustomValue)  return column.onCustomValue(datarow, rowIndex, colIndex);
 
-    return column.nullValue && !datarow[column.key] ? column.nullValue : datarow[column.key];
+    return (column.nullValue && !datarow[column.key]) ? column.nullValue : datarow[column.key];
   }
 
   onMovePage(pageIndex: number): void {
     if(!this.dataListPerPage) 
       return ;
 
-    let rowsPerPage       = this.config.option.rowsPerPage;
-
     this.dataListToShow   = this.dataListPerPage[pageIndex];
-    this.emptyRows        = this._getEmptyRowsToBeFilled(this.dataListToShow, rowsPerPage);
+    this.emptyRows        = this._getEmptyRowsToBeFilled(this.dataListToShow, this.config.option.rowsPerPage);
     this.currentPageIndex = pageIndex;
   }
 
@@ -133,6 +136,14 @@ export class GridComponent implements OnInit {
 
   isEmptyDataList() {
     return this.dataListToShow.length === 0
+  }
+
+  isTextType(column: GridColumn) {
+    return column.type === 'text';
+  }
+
+  isButtonType(column: GridColumn) {
+    return column.type === 'button';
   }
 
   private _getColumnByProperty(columns: GridColumn[], key: string, property: string): GridColumn {
